@@ -1,0 +1,40 @@
+﻿<Window x:Class="HX1584_SZTGUI_2023242.WpfClient.CartWpf.CartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HX1584_SZTGUI_2023242.WpfClient.CartWpf"
+        xmlns:vms="clr-namespace:HX1584_SZTGUI_2023242.WpfClient.CartWpf"
+        mc:Ignorable="d"
+        Title="CartWindow" Height="550" Width="800">
+    <Window.DataContext>
+        <vms:CartWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" ItemsSource="{Binding Carts}" SelectedItem="{Binding SelectedCart}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding cart_ID}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="Cart ID" Background="LightBlue" Padding="10" />
+            <TextBox Text="{Binding SelectedCart.cart_ID}" Padding="10" />
+            <Label Content="Comment" Background="LightBlue" Padding="10" />
+            <TextBox Text="{Binding SelectedCart.comment}" Padding="10" />
+            <Label Content="Priority (1-3)" Background="LightBlue" Padding="10" />
+            <TextBox Text="{Binding SelectedCart.priority}" Padding="10"/>
+            <Label Content="Delivered" Background="LightBlue" Padding="10" />
+            <TextBox Text="{Binding SelectedCart.delivered}" Padding="10" />
+            <Button Content="Create Cart" Command="{Binding CreateCartCommand}" Margin="10" Padding="10" />
+            <Button Content="Delete Cart" Command="{Binding DeleteCartCommand}" Margin="10" Padding="10" />
+            <Button Content="Update Cart" Command="{Binding UpdateCartCommand}" Margin="10" Padding="10" />
+            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>
