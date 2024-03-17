@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HX1584_SZTGUI_2023242.WpfClient.CartWpf"
         xmlns:vms="clr-namespace:HX1584_SZTGUI_2023242.WpfClient.CartWpf"
         mc:Ignorable="d"
-        Title="CartWindow" Height="550" Width="800">
+        Title="CartWindow" Height="600" Width="800">
     <Window.DataContext>
         <vms:CartWindowViewModel/>
     </Window.DataContext>
@@ -15,25 +15,27 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Carts}" SelectedItem="{Binding SelectedCart}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Carts}" SelectedItem="{Binding SelectedCart}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding cart_ID}"/>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Label Content="{Binding cart_ID}" HorizontalAlignment="Center"/>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Cart ID" Background="LightBlue" Padding="10" />
+            <Label Content="Cart ID" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCart.cart_ID}" Padding="10" />
-            <Label Content="Comment" Background="LightBlue" Padding="10" />
+            <Label Content="Comment" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCart.comment}" Padding="10" />
-            <Label Content="Priority (1-3)" Background="LightBlue" Padding="10" />
+            <Label Content="Priority (1-3)" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCart.priority}" Padding="10"/>
-            <Label Content="Delivered" Background="LightBlue" Padding="10" />
+            <Label Content="Delivered" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCart.delivered}" Padding="10" />
-            <Button Content="Create Cart" Command="{Binding CreateCartCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Cart" Command="{Binding DeleteCartCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Cart" Command="{Binding UpdateCartCommand}" Margin="10" Padding="10" />
+            <Button Content="Create Cart" Command="{Binding CreateCartCommand}" Background="Green" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Update Cart" Command="{Binding UpdateCartCommand}" Background="GreenYellow" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Delete Cart" Command="{Binding DeleteCartCommand}" Background="Red" Margin="10" Padding="10" FontWeight="DemiBold"/>
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>

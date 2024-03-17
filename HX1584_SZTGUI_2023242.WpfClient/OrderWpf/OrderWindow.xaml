@@ -15,25 +15,27 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding order_id}"/>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Label Content="{Binding order_id}" HorizontalAlignment="Center"/>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Order ID" Background="LightBlue" Padding="10" />
+            <Label Content="Order ID" Background="#FFEDB550" Padding="10" FontWeight="Bold" />
             <TextBox Text="{Binding SelectedOrder.order_id}" Padding="10" />
-            <Label Content="Item ID" Background="LightBlue" Padding="10" />
+            <Label Content="Item ID" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedOrder.item_id}" Padding="10" />
-            <Label Content="Cart ID" Background="LightBlue" Padding="10" />
+            <Label Content="Cart ID" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedOrder.cart_id}" Padding="10"/>
-            <Label Content="Amount" Background="LightBlue" Padding="10" />
+            <Label Content="Amount" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedOrder.amount}" Padding="10" />
-            <Button Content="Create Order" Command="{Binding CreateOrderCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Order" Command="{Binding DeleteOrderCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Order" Command="{Binding UpdateOrderCommand}" Margin="10" Padding="10" />
+            <Button Content="Create Cart" Command="{Binding CreateOrderCommand}" Background="Green" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Update Cart" Command="{Binding UpdateOrderCommand}" Background="GreenYellow" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Delete Cart" Command="{Binding DeleteOrderCommand}" Background="Red" Margin="10" Padding="10" FontWeight="DemiBold"/>
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>

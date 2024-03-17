@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HX1584_SZTGUI_2023242.WpfClient.CustomerWpf"
         xmlns:vms="clr-namespace:HX1584_SZTGUI_2023242.WpfClient.CustomerWpf"
         mc:Ignorable="d"
-        Title="CustomerWindow" Height="450" Width="800">
+        Title="CustomerWindow" Height="600" Width="800">
     <Window.DataContext>
         <vms:CustomerWindowViewModel/>
     </Window.DataContext>
@@ -15,21 +15,23 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding name}"/>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Label Content="{Binding name}" HorizontalAlignment="Center"/>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10" />
+            <Label Content="Name" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCustomer.name}" Padding="10" />
-            <Label Content="Phone" Background="LightBlue" Padding="10" />
+            <Label Content="Phone" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCustomer.phone}" Padding="10" />
-            <Label Content="City" Background="LightBlue" Padding="10" />
+            <Label Content="City" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCustomer.city}" Padding="10"/>
-            <Label Content="Year" Background="LightBlue" Padding="10" />
+            <Label Content="Year" Background="#FFEDB550" Padding="10" FontWeight="Bold"/>
             <TextBox Text="{Binding SelectedCustomer.year}" Padding="10" />
             <StackPanel Orientation="Horizontal">
                 <Label Content="Customer ID:"/>
@@ -37,9 +39,9 @@
                 <Label Content="Cart ID:"/>
                 <Label Content="{Binding SelectedCustomer.cart_id}"/>
             </StackPanel>
-            <Button Content="Create Customer" Command="{Binding CreateCustomerCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Customer" Command="{Binding DeleteCustomerCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Customer" Command="{Binding UpdateCustomerCommand}" Margin="10" Padding="10" />
+            <Button Content="Create Cart" Command="{Binding CreateCustomerCommand}" Background="Green" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Update Cart" Command="{Binding UpdateCustomerCommand}" Background="GreenYellow" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Delete Cart" Command="{Binding DeleteCustomerCommand}" Background="Red" Margin="10" Padding="10" FontWeight="DemiBold"/>
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
 
