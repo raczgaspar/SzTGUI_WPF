@@ -39,9 +39,9 @@
                 <Label Content="Cart ID:"/>
                 <Label Content="{Binding SelectedCustomer.cart_id}"/>
             </StackPanel>
-            <Button Content="Create Cart" Command="{Binding CreateCustomerCommand}" Background="Green" Margin="10" Padding="10" FontWeight="DemiBold"/>
-            <Button Content="Update Cart" Command="{Binding UpdateCustomerCommand}" Background="GreenYellow" Margin="10" Padding="10" FontWeight="DemiBold"/>
-            <Button Content="Delete Cart" Command="{Binding DeleteCustomerCommand}" Background="Red" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Create Customer" Command="{Binding CreateCustomerCommand}" Background="Green" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Update Customer" Command="{Binding UpdateCustomerCommand}" Background="GreenYellow" Margin="10" Padding="10" FontWeight="DemiBold"/>
+            <Button Content="Delete Customer" Command="{Binding DeleteCustomerCommand}" Background="Red" Margin="10" Padding="10" FontWeight="DemiBold"/>
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
 

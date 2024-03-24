@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Webshop UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Customer Catalog</h1>
+
+    <div id="formdiv">
+        <label>Customer Name:</label>
+        <input type="text" id="customerName" />
+        <label>Customer's age:</label>
+        <input type="text" id="customerAge" />
+        <label>Customer's phone:</label>
+        <input type="text" id="customerPhone" />
+        <label>City:</label>
+        <input type="text" id="customerCity" />
+        <br />
+        <button type="button" onclick="create()">Add Customer</button>
+    </div>
+
+    <div id="updateFormdiv">
+        <label>Customer Name:</label>
+        <input type="text" id="customerNameUpdate" />
+        <label>Customer's age:</label>
+        <input type="text" id="customerAgeUpdate" />
+        <label>Customer's phone:</label>
+        <input type="text" id="customerPhoneUpdate" />
+        <label>City:</label>
+        <input type="text" id="customerCityUpdate" />
+        <br />
+        <button type="button" onclick="update()">Update Customer</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Cart ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="customerResult">
+        </tbody>
+    </table>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

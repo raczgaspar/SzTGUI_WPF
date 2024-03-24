@@ -1,0 +1,53 @@
+﻿table{
+    width: 100%;
+}
+h1{
+    font-size:60px;
+    text-align:center;
+    text-decoration-line:underline;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+table{
+    border-collapse: collapse;
+}
+th, td{
+    padding: 5px;
+    text-align:center;
+    
+}
+th{
+    background-color:lawngreen;
+}
+
+#formdiv{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:30px;
+}
+
+#formdiv label, button, input{
+    margin: 2px;
+    padding:3px;
+}
+
+#formdiv label{
+    font-weight: bolder;
+}
+
+#updateFormdiv {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+#updateFormdiv label, button, input {
+        margin: 2px;
+        padding: 3px;
+    }
+
+#updateFormdiv label {
+        font-weight: bolder;
+    }
