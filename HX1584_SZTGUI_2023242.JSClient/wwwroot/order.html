@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Webshop UI</title>
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+</head>
+<body>
+    <li><a href="index.html">Customer</a></li>
+    <li><a href="items.html">Items</a></li>
+    <li><a href="order.html">Order</a></li>
+    <li><a href="#about">About</a></li>
+
+    <h1>Orders Catalog</h1>
+
+    <div id="formdiv">
+        <label>Order ID:</label>
+        <input type="text" id="orderId" />
+        <label>Item ID:</label>
+        <input type="text" id="orderItem" />
+        <label>Cart ID:</label>
+        <input type="text" id="orderCart" />
+        <label>Amount:</label>
+        <input type="text" id="orderAmount" />
+        <br />
+        <button type="button" onclick="createOrder()">Add Order</button>
+    </div>
+
+    <div id="updateFormdiv">
+        <label>Order ID:</label>
+        <input type="text" id="orderIdUpdate" />
+        <label>Item ID:</label>
+        <input type="text" id="orderItemUpdate" />
+        <label>Cart ID:</label>
+        <input type="text" id="orderCartUpdate" />
+        <label>Amount:</label>
+        <input type="text" id="orderAmountUpdate" />
+        <br />
+        <button type="button" onclick="updateOrder()">Update Order</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Item ID</th>
+                <th>Cart ID</th>
+                <th>Amoutn</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="orderResult">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@
     <ul>
         <li><a href="index.html">Customer</a></li>
         <li><a href="items.html">Items</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="order.html">Order</a></li>
         <li><a href="#about">About</a></li>
     </ul>
 
@@ -30,5 +30,39 @@
         <br />
         <button type="button" onclick="createItem()">Add Item</button>
     </div>
+
+    <div id="updateFormdiv">
+        <label>Item ID:</label>
+        <input type="text" id="itemIdUpdate" />
+        <label>Product name:</label>
+        <input type="text" id="itemNameUpdate" />
+        <label>Price:</label>
+        <input type="text" id="itemPriceUpdate" />
+        <label>Year of manufacture:</label>
+        <input type="text" id="itemYearUpdate" />
+        <label>Fabrication country:</label>
+        <input type="text" id="itemCountryUpdate" />
+        <br />
+        <button type="button" onclick="updateItem()">Update Item</button>
+    </div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Year of manufacture</th>
+                <th>Fabrication county</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="itemResult">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
