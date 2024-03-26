@@ -376,7 +376,7 @@ function updateOrder() {
     let amo_update = document.getElementById("orderAmountUpdate").value;
     let item = orders.find(x => x['order_id'] == orderIdUpdate)['item'];
 
-    fetch('http://localhost:64867/item', {
+    fetch('http://localhost:64867/order', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -387,7 +387,7 @@ function updateOrder() {
                 item_id: item_update,
                 cart_id: cart_update,
                 amount: amo_update,
-                item : item
+                
             }),
     })
         .then(response => response)
