@@ -64,7 +64,7 @@ function display() {
     })
 }
 
-function create() {
+function createCustomer() {
     let name_new = document.getElementById("customerName").value;
     let age_new = document.getElementById("customerAge").value;
     let phone_new = document.getElementById("customerPhone").value;
