@@ -44,11 +44,20 @@ async function getData(){
         .then(y => {
             customer = y;
             console.log(customer);
-            display()
+            displayCustomer()
+        });
+}
+async function getItemData() {
+    await fetch('http://localhost:64867/item')
+        .then(x => x.json())
+        .then(y => {
+            items = y;
+            console.log(items);
+            displayItem()
         });
 }
 
-function display() {
+function displayCustomer() {
     document.getElementById('customerResult').innerHTML = "";
     customer.forEach(t => {
         document.getElementById('customerResult').innerHTML +=
@@ -120,7 +129,7 @@ function showUpdate(id) {
     customerIdToUpdate = id;
 }
 
-function update(id) {
+function updateCustomer(id) {
     document.getElementById("updateFormdiv").style.display = 'none';
     let name_update = document.getElementById("customerNameUpdate").value;
     let age_update = document.getElementById("customerAgeUpdate").value;
