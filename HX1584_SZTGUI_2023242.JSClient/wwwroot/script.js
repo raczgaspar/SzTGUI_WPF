@@ -1,10 +1,12 @@
 ﻿let customer = [];
 let items = [];
 let orders = [];
+let carts = [];
 let connection;
 let customerIdToUpdate;
 let itemIdUpdate;
 let orderIdUpdate;
+let cartIdUpdate;
 
 var path = window.location.pathname;
 var page = path.split("/").pop();
@@ -12,6 +14,7 @@ switch (page) {
     case 'index.html': getData(); break;
     case 'items.html': getItemData(); break;
     case 'order.html': getOrderData(); break;
+    case 'cart.html': getCartData(); break;
 
     default:getData()
 }
@@ -50,6 +53,15 @@ function setupSignalR() {
     });
     connection.on("OrderDeleted", (user, message) => {
         getOrderData();
+    });
+    connection.on("CartDeleted", (user, message) => {
+        getCartData();
+    });
+    connection.on("CartUpdated", (user, message) => {
+        getCartData();
+    });
+    connection.on("CartCreated", (user, message) => {
+        getCartData();
     });
     connection.onclose
         (async () => {
@@ -97,6 +109,15 @@ async function getOrderData() {
         });
 
 }
+async function getCartData() {
+    await fetch('http://localhost:64867/cart')
+        .then(x => x.json())
+        .then(y => {
+            carts = y;
+            console.log(carts);
+            displayCart()
+        });
+}
 
 function displayCustomer() {
     document.getElementById('customerResult').innerHTML = "";
@@ -137,6 +158,19 @@ function displayOrder() {
         + t.amount + "</td><td>"
             + `<button type="button" onclick="removeOrder(${t.order_id})">Delete</button>`
             + `<button type="button" onclick="showUpdateOrder(${t.order_id})">Update</button>` + "</td></tr>";
+        console.log()
+    })
+}
+function displayCart() {
+    document.getElementById('cartResult').innerHTML = "";
+    carts.forEach(t => {
+        document.getElementById('cartResult').innerHTML +=
+            "<tr><td>" + t.cart_ID + "</td><td>"
+            + t.comment + "</td><td>"
+            + t.priority + "</td><td>"
+            + t.delivered + "</td><td>"
+            + `<button type="button" onclick="removeCart(${t.cart_ID})">Delete</button>`
+            + `<button type="button" onclick="showUpdateCart(${t.cart_ID})">Update</button>` + "</td></tr>";
         console.log()
     })
 }
@@ -228,6 +262,34 @@ function createOrder() {
             console.error('Error:', error);
         });
 }
+function createCart() {
+    let id_new = document.getElementById("cartId").value;
+    let comment_new = document.getElementById("cartComment").value;
+    let prio_new = document.getElementById("cartPrio").value;
+    let deli_new = document.getElementById("cartDeli").checked;
+
+    fetch('http://localhost:64867/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+            {
+                cart_ID: id_new,
+                comment: comment_new,
+                priority: prio_new,
+                delivered: deli_new
+            }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getCartData();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
 
 function remove(id) {
     fetch('http://localhost:64867/customer/' + id, {
@@ -280,6 +342,23 @@ function removeOrder(id) {
             console.error('Error:', error);
         });
 }
+function removeCart(id) {
+    fetch('http://localhost:64867/cart/' + id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: null
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getCartData();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
 
 function showUpdate(id) {
     document.getElementById("customerNameUpdate").value = customer.find(x => x['customer_id'] == id)['name'];
@@ -305,6 +384,14 @@ function showUpdateOrder(id) {
     document.getElementById("orderAmountUpdate").value = orders.find(x => x['order_id'] == id)['amount'];
     document.getElementById("updateFormdiv").style.display = 'flex';
     orderIdUpdate = id;
+}
+function showUpdateCart(id) {
+    document.getElementById("cartIdUpdate").value = carts.find(x => x['cart_ID'] == id)['cart_ID'];
+    document.getElementById("cartCommentUpdate").value = carts.find(x => x['cart_ID'] == id)['comment'];
+    document.getElementById("cartPrioUpdate").value = carts.find(x => x['cart_ID'] == id)['priority'];
+    document.getElementById("cartDeliUpdate").checked = carts.find(x => x['cart_ID'] == id)['delivered'];
+    document.getElementById("updateFormdiv").style.display = 'flex';
+    cartIdUpdate = id;
 }
 
 function updateCustomer() {
@@ -394,6 +481,35 @@ function updateOrder() {
         .then(data => {
             console.log('Success:', data);
             getOrderData();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+function updateCart() {
+    document.getElementById("updateFormdiv").style.display = 'none';
+    let id_update = document.getElementById("cartIdUpdate").value;
+    let comment_update = document.getElementById("cartCommentUpdate").value;
+    let prio_update = document.getElementById("cartPrioUpdate").value;
+    let deli_update = document.getElementById("cartDeliUpdate").checked;
+    
+    fetch('http://localhost:64867/cart', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+            {
+                cart_ID: id_update,
+                comment: comment_update,
+                priority: prio_update,
+                delivered : deli_update
+            }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getCartData();
         })
         .catch((error) => {
             console.error('Error:', error);

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Webshop UI</title>
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+</head>
+<body>
+    <li><a href="index.html">Customers</a></li>
+    <li><a href="items.html">Items</a></li>
+    <li><a href="order.html">Orders</a></li>
+    <li><a href="cart.html">Carts</a></li>
+
+    <h1>Carts Catalog</h1>
+
+    <div id="formdiv">
+        <label>Cart ID:</label>
+        <input type="text" id="cartId" />
+        <label>Comment:</label>
+        <input type="text" id="cartComment" />
+        <label>Priority (1-3):</label>
+        <input type="text" id="cartPrio" />
+        <label>Delivered:</label>
+        <input type="checkbox" id="cartDeli" />
+        <br />
+        <button type="button" onclick="createCart()">Add Cart</button>
+    </div>
+
+    <div id="updateFormdiv">
+        <label>Cart ID:</label>
+        <input type="text" id="cartIdUpdate" />
+        <label>Comment:</label>
+        <input type="text" id="cartCommentUpdate" />
+        <label>Priority (1-3):</label>
+        <input type="text" id="cartPrioUpdate" />
+        <label>Delivered:</label>
+        <input type="checkbox" id="cartDeliUpdate" />
+        <br />
+        <button type="button" onclick="updateCart()">Update Cart</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cart ID</th>
+                <th>Comment</th>
+                <th>Priority</th>
+                <th>Delivered</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cartResult">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
